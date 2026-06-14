@@ -1,0 +1,31 @@
+/* PCP / Production Styling */
+.steps-flow-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 1rem 0;
+}
+.steps-flow-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--border-color);
+  z-index: 1;
+  transform: translateY(-50%);
+}
+.step-dot-item {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-color);
+  z-index: 2;
+  cursor: help;
+  transition: background-color 0.2s;
+}
+.step-dot-item.passed {
+  background: var(--primary-400);
+}

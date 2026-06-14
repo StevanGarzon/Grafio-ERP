@@ -1,0 +1,7 @@
+/* Sheet cutting simulator CSS companion */
+.nesting-visual-sheet {
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+}
+.nesting-item-box {
+  animation: fadeIn 0.3s ease-out;
+}

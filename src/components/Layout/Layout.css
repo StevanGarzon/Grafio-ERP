@@ -1,0 +1,85 @@
+.app-layout { display: flex; min-height: 100vh; }
+.app-main {
+  flex: 1; margin-left: var(--sidebar-width); min-height: 100vh;
+  transition: margin-left var(--transition-base);
+  background: var(--surface-app); position: relative;
+}
+.app-main::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 300px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(51,102,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.app-content { position: relative; padding: 2rem; max-width: 1400px; margin: 0 auto; }
+
+/* Premium Security Threat Alert Banner */
+.security-toast-container {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  width: 90%;
+  max-width: 480px;
+  animation: sec-slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.security-toast {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--danger-500);
+  border-left: 5px solid var(--danger-500);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+
+.security-toast-icon-wrap {
+  color: var(--danger-500);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.security-toast-content {
+  flex: 1;
+}
+
+.security-toast-title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.security-toast-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.security-toast-badge {
+  display: inline-block;
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--danger-400);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.625rem;
+  margin-top: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes sec-slide-down {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

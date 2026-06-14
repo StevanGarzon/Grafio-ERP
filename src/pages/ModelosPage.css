@@ -1,0 +1,114 @@
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.template-card {
+  padding: 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+
+.template-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-500);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
+}
+
+.template-icon-box {
+  background: rgba(51, 102, 255, 0.1);
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.template-quick-actions {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: flex;
+  gap: 4px;
+}
+
+.btn-icon-sm {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-icon-sm:hover {
+  background: var(--bg-body);
+  color: var(--primary-400);
+  border-color: var(--primary-400);
+}
+
+.btn-icon-sm.text-danger:hover {
+  color: var(--danger-400);
+  border-color: var(--danger-400);
+}
+
+.format-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  font-size: 0.625rem;
+  font-weight: 800;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+
+.template-info {
+  flex: 1;
+}
+
+.template-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.template-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.template-meta {
+  margin-bottom: 1rem;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--primary-400);
+}
+
+@media (max-width: 600px) {
+  .templates-grid { grid-template-columns: 1fr; }
+}

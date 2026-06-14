@@ -1,0 +1,4 @@
+/* Executive Dashboard CSS styling companion */
+.border-left-warning {
+  border-left: 4px solid var(--warning-500);
+}

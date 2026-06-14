@@ -1,0 +1,60 @@
+.view-grid { display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; }
+
+.doc-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.doc-logo-text { font-size: 1.75rem; font-weight: 900; letter-spacing: 0.1em; color: var(--primary-400); }
+.doc-company-info { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5; }
+.doc-meta { text-align: right; }
+.doc-meta h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.doc-meta p { font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem; }
+
+.doc-section-title { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin-bottom: 1rem; }
+.doc-client p { font-size: 0.875rem; margin-bottom: 0.25rem; }
+
+.doc-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+.doc-table th { padding: 0.5rem; border-bottom: 2px solid var(--border-strong); font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-align: left; }
+.doc-table td { padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border-subtle); font-size: 0.875rem; }
+
+.doc-footer-grid { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; margin-top: 2rem; }
+.doc-totals { background: var(--surface-app); padding: 1rem; border-radius: var(--radius-md); }
+.doc-total-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem; }
+.doc-grand-total { margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-strong); font-size: 1.125rem; font-weight: 700; color: var(--primary-400); }
+
+@media (max-width: 1024px) {
+  .view-grid { grid-template-columns: 1fr; }
+  .doc-footer-grid { grid-template-columns: 1fr; }
+}
+
+/* Print Styles */
+@media print {
+  @page { margin: 1cm; }
+  
+  body { background: white !important; color: black !important; }
+  
+  /* Esconde TUDO que não é o orçamento */
+  .sidebar, .navbar, .print-hide, .app-header, .header-actions, .view-sidebar, button { 
+    display: none !important; 
+  }
+  
+  /* Ajusta o container principal para usar a folha toda */
+  .app-layout { display: block !important; }
+  .app-main { margin-left: 0 !important; padding: 0 !important; }
+  .app-content { padding: 0 !important; max-width: none !important; }
+  .page-container { padding: 0 !important; margin: 0 !important; }
+  
+  .view-grid { display: block; }
+  
+  .print-card { 
+    border: none !important; 
+    box-shadow: none !important; 
+    padding: 0 !important; 
+    background: transparent !important;
+    width: 100% !important;
+  }
+  
+  .doc-logo-text { color: black !important; }
+  .doc-meta h2, .doc-section-title { color: black !important; }
+  .doc-table th { border-bottom-color: #000 !important; color: black !important; }
+  .doc-table td { border-bottom-color: #ddd !important; }
+  .doc-totals { background: #f9f9f9 !important; border: 1px solid #ddd !important; }
+  .doc-grand-total { color: black !important; border-top-color: #000 !important; }
+}

@@ -1,0 +1,168 @@
+.doc-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.doc-sidebar {
+  padding: 1rem !important;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.sidebar-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+/* Drag and Drop Styles */
+.doc-main {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.drag-highlight {
+  border: 2px dashed var(--primary-500) !important;
+  background: rgba(51, 102, 255, 0.05) !important;
+}
+
+.drag-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(var(--bg-rgb), 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.drag-message {
+  text-align: center;
+  color: var(--primary-500);
+}
+
+.drag-message h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.drag-message p {
+  color: var(--text-secondary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.category-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+}
+
+.category-item.active {
+  background: rgba(51,102,255,0.1);
+  color: var(--primary-400);
+  font-weight: 600;
+}
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.doc-card {
+  padding: 1rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.doc-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-500);
+}
+
+.doc-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(51,102,255,0.05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.doc-info {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.doc-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-meta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.doc-actions {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .doc-layout { grid-template-columns: 1fr; }
+  .doc-sidebar { position: static; }
+}

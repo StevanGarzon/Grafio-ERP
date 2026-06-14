@@ -1,0 +1,24 @@
+/* AI agent companion sidebar styling */
+.agent-sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.625rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  color: var(--text-primary);
+}
+.agent-sidebar-btn:hover {
+  background: var(--surface-2);
+}
+.agent-sidebar-btn.active {
+  background: var(--surface-3);
+  border-color: var(--border-default);
+}
+.agent-chat-messages-area {
+  background: var(--surface-2);
+}

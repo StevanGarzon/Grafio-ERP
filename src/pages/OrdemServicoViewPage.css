@@ -1,0 +1,92 @@
+.notes-box {
+  background: var(--surface-app);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  border: 1px dashed var(--border-strong);
+  min-height: 100px;
+  white-space: pre-wrap;
+}
+
+.signature-line {
+  border-top: 1px solid var(--border-strong);
+  margin-top: 4rem;
+  padding-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.timeline-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timeline-item-mini {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-400);
+  margin-top: 0.25rem;
+}
+
+.timeline-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+}
+
+.timeline-time {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+@media print {
+  @page { margin: 1cm; }
+  
+  body { background: white !important; color: black !important; }
+  
+  .sidebar, .navbar, .print-hide, .app-header, .header-actions, .view-sidebar, button, .timeline-mini { 
+    display: none !important; 
+  }
+  
+  .app-layout { display: block !important; }
+  .app-main { margin-left: 0 !important; padding: 0 !important; }
+  .app-content { padding: 0 !important; max-width: none !important; }
+  .page-container { padding: 0 !important; margin: 0 !important; }
+  
+  .view-grid { display: block; }
+  
+  .print-card { 
+    border: none !important; 
+    box-shadow: none !important; 
+    padding: 0 !important; 
+    background: transparent !important;
+    width: 100% !important;
+  }
+  
+  .doc-logo-text { color: black !important; }
+  .doc-section-title { color: black !important; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; }
+  .doc-table th { border-bottom-color: #000 !important; color: black !important; }
+  .doc-table td { border-bottom-color: #ddd !important; }
+  
+  .notes-box { 
+    background: white !important; 
+    border: 1px solid #ccc !important; 
+    color: black !important; 
+  }
+  
+  .signature-line {
+    border-top: 1px solid #000 !important;
+    color: black !important;
+  }
+}

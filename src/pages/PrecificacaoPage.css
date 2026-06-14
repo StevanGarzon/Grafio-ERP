@@ -1,0 +1,23 @@
+/* Pricing page visual styling */
+.border-left-warning {
+  border-left: 4px solid var(--warning-500);
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.theme-radio-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  background: var(--surface-1);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-size: 0.8125rem;
+}
+.theme-radio-btn.active {
+  border-color: var(--primary-400);
+  background: var(--surface-3);
+}
