@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { BarChart3, TrendingUp, Users, DollarSign, ArrowUpRight, ArrowDownRight, Calendar } from 'lucide-react';
 import './RelatoriosPage.css';
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement } from 'chart.js';
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement);
+import ChartJS from 'chart.js/auto';
+
 
 export default function RelatoriosPage() {
   const [timeRange] = useState('Este Mês');

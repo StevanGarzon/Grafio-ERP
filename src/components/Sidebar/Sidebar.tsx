@@ -61,7 +61,6 @@ const navSections = [
   {
     title: 'Sistema',
     items: [
-      { path: '/relatorios', icon: BarChart3, label: 'Relatórios' },
       { path: '/executive-dashboard', icon: LineChart, label: 'BI Executivo' },
       { path: '/configuracoes', icon: Settings, label: 'Configurações' },
     ],

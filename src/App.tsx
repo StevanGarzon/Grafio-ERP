@@ -27,7 +27,6 @@ import VisitasPage from './pages/VisitasPage';
 import VisitaFormPage from './pages/VisitaFormPage';
 import DocumentosPage from './pages/DocumentosPage';
 import NotasPage from './pages/NotasPage';
-import RelatoriosPage from './pages/RelatoriosPage';
 import ContratosPage from './pages/ContratosPage';
 import ComparadorPrecosPage from './pages/ComparadorPrecosPage';
 import ModelosPage from './pages/ModelosPage';
@@ -119,7 +118,6 @@ export default function App() {
             <Route path="modelos" element={<ModelosPage />} />
             <Route path="links" element={<LinksPage />} />
             <Route path="notas" element={<NotasPage />} />
-            <Route path="relatorios" element={<RelatoriosPage />} />
             <Route path="instalacoes" element={<InstalacoesPage />} />
             <Route path="calendario" element={<CalendarioPage />} />
             <Route path="crm" element={<CrmPipelinePage />} />

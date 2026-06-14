@@ -260,14 +260,20 @@ export default function ConfiguracoesPage() {
     return initial;
   });
 
-  // Update dynamic SQL logs in real-time when WAF intercepts an attack
+  // Update dynamic SQL and access/change logs in real-time when WAF intercepts an attack or system logs event
   useEffect(() => {
     const handleLogsUpdate = () => {
-      const saved = localStorage.getItem('grafio_security_sql_logs');
-      if (saved) {
-        try {
-          setSqlLogs(JSON.parse(saved));
-        } catch(e){}
+      const savedSql = localStorage.getItem('grafio_security_sql_logs');
+      if (savedSql) {
+        try { setSqlLogs(JSON.parse(savedSql)); } catch(e){}
+      }
+      const savedAccess = localStorage.getItem('grafio_security_access_logs');
+      if (savedAccess) {
+        try { setAccessLogs(JSON.parse(savedAccess)); } catch(e){}
+      }
+      const savedChanges = localStorage.getItem('grafio_security_change_logs');
+      if (savedChanges) {
+        try { setChangeLogs(JSON.parse(savedChanges)); } catch(e){}
       }
     };
     window.addEventListener('security-logs-updated', handleLogsUpdate);

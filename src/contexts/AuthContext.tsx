@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase, logAccessLocally } from '../lib/supabase';
 import type { User, Session } from '@supabase/supabase-js';
+
 
 interface AuthContextType {
   user: User | null;
@@ -30,10 +31,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Escuta mudanças na autenticação
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+
+        if (session?.user?.email) {
+          if (event === 'SIGNED_IN') {
+            logAccessLocally(session.user.email, 'Login bem-sucedido', 'success');
+          } else if (event === 'SIGNED_OUT') {
+            logAccessLocally(session.user.email, 'Logout efetuado', 'success');
+          }
+        }
       }
     );
 
