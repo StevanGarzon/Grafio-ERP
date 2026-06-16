@@ -22,6 +22,12 @@ const rawSupabase = createClient(
   }
 );
 
+function getLocalTimestamp() {
+  const d = new Date();
+  const offset = d.getTimezoneOffset() * 60000;
+  return new Date(d.getTime() - offset).toISOString().replace('T', ' ').substring(0, 19);
+}
+
 // Logging utility to save system audit logs
 function logChangeLocally(table: string, action: 'INSERT' | 'UPDATE' | 'DELETE', payload: any) {
   try {
@@ -53,7 +59,7 @@ function logChangeLocally(table: string, action: 'INSERT' | 'UPDATE' | 'DELETE',
 
     const newLog = {
       id: Math.random().toString(),
-      timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+      timestamp: getLocalTimestamp(),
       user: userEmail,
       table: table,
       action: action,
@@ -76,7 +82,7 @@ export function logAccessLocally(user: string, action: string, status: 'success'
     const logs = saved ? JSON.parse(saved) : [];
     const newLog = {
       id: Math.random().toString(),
-      timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+      timestamp: getLocalTimestamp(),
       user,
       action,
       ip: '127.0.0.1',

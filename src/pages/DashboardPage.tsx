@@ -1,9 +1,11 @@
+import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import {
   Users, FileText, ClipboardList, DollarSign,
   TrendingUp, TrendingDown, ArrowRight, Clock,
   CheckCircle2, AlertTriangle, Calendar
 } from 'lucide-react';
+import { quoteService } from '../services/quoteService';
 import './DashboardPage.css';
 
 const stats = [
@@ -29,6 +31,52 @@ const quickActions = [
 export default function DashboardPage() {
   const { user } = useAuth();
   const firstName = user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'Usuário';
+
+  const [quotes, setQuotes] = useState<any[]>([]);
+  const [selectedQuoteId, setSelectedQuoteId] = useState<string>('mock-1');
+
+  const defaultMockQuotes = [
+    { id: 'mock-1', number: 1052, client: { name: 'Academia Corpo & Saúde' }, total_amount: 2450.00, inactive_days: 4, title: 'Letreiro ACM' },
+    { id: 'mock-2', number: 1053, client: { name: 'Supermercado Solar' }, total_amount: 8500.00, inactive_days: 5, title: 'Letreiro ACM Luminoso' },
+    { id: 'mock-3', number: 1054, client: { name: 'Pizzaria Napolitana' }, total_amount: 350.00, inactive_days: 4, title: 'Banner Lona 440g' },
+    { id: 'mock-4', number: 1055, client: { name: 'Tech Office S/A' }, total_amount: 2400.00, inactive_days: 7, title: 'Adesivação de Vidros' }
+  ];
+
+  useEffect(() => {
+    let active = true;
+    const loadQuotes = async () => {
+      try {
+        const data = await quoteService.getQuotes();
+        if (active) {
+          if (data && data.length > 0) {
+            const mapped = data.map((q, idx) => ({
+              id: q.id,
+              number: q.number || (1060 + idx),
+              client: { name: q.client?.name || 'Cliente sem nome' },
+              total_amount: q.total_amount,
+              inactive_days: Math.floor(Math.random() * 6) + 2,
+              title: q.items && q.items[0] ? q.items[0].description : 'Orçamento Geral'
+            }));
+            setQuotes([...mapped, ...defaultMockQuotes]);
+            setSelectedQuoteId(mapped[0].id);
+          } else {
+            setQuotes(defaultMockQuotes);
+            setSelectedQuoteId('mock-1');
+          }
+        }
+      } catch (err) {
+        console.error('Erro ao carregar orçamentos no dashboard:', err);
+        if (active) {
+          setQuotes(defaultMockQuotes);
+          setSelectedQuoteId('mock-1');
+        }
+      }
+    };
+    loadQuotes();
+    return () => { active = false; };
+  }, []);
+
+  const currentQuote = quotes.find(q => q.id === selectedQuoteId) || defaultMockQuotes[0];
 
   return (
     <div className="dashboard animate-fade-in">
@@ -112,21 +160,40 @@ export default function DashboardPage() {
         <div className="dashboard-section follow-up-section" style={{ gridColumn: 'span 2' }}>
           <h2 className="dashboard-section-title">🔥 Ação Recomendada: Follow-up de Vendas</h2>
           <div className="follow-up-grid card" style={{ padding: '1.5rem !important' }}>
+            <div style={{ marginBottom: '1rem', display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+              <label htmlFor="quote-follow-up-select" style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--text-secondary)' }}>
+                Selecione o orçamento para cobrança:
+              </label>
+              <select
+                id="quote-follow-up-select"
+                className="input input-sm"
+                style={{ minWidth: '280px', padding: '0.375rem', borderRadius: '6px', fontSize: '0.875rem', background: 'var(--surface-card)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' }}
+                value={selectedQuoteId}
+                onChange={(e) => setSelectedQuoteId(e.target.value)}
+              >
+                {quotes.map(q => (
+                  <option key={q.id} value={q.id}>
+                    #{q.number} - {q.client?.name} (R$ {q.total_amount?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })})
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="follow-up-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem', background: 'rgba(245,158,11,0.05)', borderRadius: '12px', border: '1px solid rgba(245,158,11,0.2)' }}>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                 <div style={{ width: 40, height: 40, background: 'var(--warning-500)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
                   <Clock size={20} />
                 </div>
                 <div>
-                  <h4 style={{ margin: 0, fontSize: '0.9375rem' }}>Academia Corpo & Saúde</h4>
-                  <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Orçamento #1052 parado há 4 dias (R$ 2.450,00)</p>
+                  <h4 style={{ margin: 0, fontSize: '0.9375rem' }}>{currentQuote?.client?.name}</h4>
+                  <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Orçamento #{currentQuote?.number} parado há {currentQuote?.inactive_days} dias (R$ {currentQuote?.total_amount?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })})</p>
                 </div>
               </div>
               <button 
                 className="btn btn-success btn-sm" 
                 style={{ gap: '0.5rem' }}
                 onClick={() => {
-                  const message = "Olá! Gostaria de verificar se você recebeu o Orçamento #1052 para a Academia Corpo & Saúde no valor de R$ 2.450,00. Ficamos no aguardo para iniciar a produção!";
+                  const message = `Olá! Gostaria de verificar se você recebeu o Orçamento #${currentQuote?.number} para a ${currentQuote?.client?.name} no valor de R$ ${currentQuote?.total_amount?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}. Ficamos no aguardo para iniciar a produção!`;
                   window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
                 }}
               >

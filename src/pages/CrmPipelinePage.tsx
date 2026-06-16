@@ -41,7 +41,7 @@ export default function CrmPipelinePage() {
 
   const handleTriggerAiAction = (opp: Opportunity) => {
     setAiAnalysis(`[IA Comercial]: O negócio com ${opp.client_name} (R$ ${opp.value}) está parado há ${opp.inactive_days} dias.
-• Whatsapp sugerido: "Olá, vimos que seu orçamento para o Letreiro ACM está pronto! Conseguimos condições especiais de parcelamento se fecharmos essa semana. Vamos avançar?"
+• Whatsapp sugerido: "Olá, vimos que seu orçamento para o ${opp.title} está pronto! Conseguimos condições especiais de parcelamento se fecharmos essa semana. Vamos avançar?"
 • Email automático gerado com sucesso.
 • Tarefa criada: Vendedor deve ligar em 24h.`);
     setSelectedOpp(opp);
@@ -144,7 +144,8 @@ export default function CrmPipelinePage() {
               className="btn btn-primary btn-sm" 
               style={{ gap: '0.25rem' }}
               onClick={() => {
-                const message = "Olá, vimos que seu orçamento para o Letreiro ACM está pronto! Conseguimos condições especiais de parcelamento se fecharmos essa semana. Vamos avançar?";
+                const itemTitle = selectedOpp ? selectedOpp.title : "seu orçamento";
+                const message = `Olá, vimos que seu orçamento para o ${itemTitle} está pronto! Conseguimos condições especiais de parcelamento se fecharmos essa semana. Vamos avançar?`;
                 window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
               }}
             >

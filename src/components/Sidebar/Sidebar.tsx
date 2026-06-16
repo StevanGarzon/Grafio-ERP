@@ -35,7 +35,6 @@ const navSections = [
       { path: '/calculadoras', icon: CalcIcon, label: 'Calculadoras' },
       { path: '/comparador', icon: ShoppingCart, label: 'Comparador de Preços' },
       { path: '/maquinas', icon: Cpu, label: 'Máquinas & Ativos' },
-      { path: '/scanner', icon: Scan, label: 'Leitor QR Produção' },
     ],
   },
   {

@@ -141,18 +141,9 @@ const knowledgeBase: KnowledgeEntry[] = [
     category: 'Produção / PCP',
     keywords: ['producao', 'pcp', 'kanban', 'painel producao', 'etapa', 'etapas', 'status producao', 'coluna', 'backlog', 'arte', 'impressao', 'acabamento', 'concluido', 'planejamento'],
     question: 'Como funciona o PCP / Kanban?',
-    answer: 'O **PCP (Planejamento e Controle de Produção)** organiza as OSs em um painel Kanban visual:\n\n• **Backlog** — OSs aguardando início.\n• **Arte/Aprovação** — arte em criação ou aguardando aprovação do cliente.\n• **Impressão** — peças sendo impressas.\n• **Acabamento** — corte, dobra, colagem e montagem.\n• **Instalação** — peças prontas para instalar.\n• **Concluído** — trabalhos finalizados.\n\nArraste as OSs entre colunas para atualizar o status, ou use o [Leitor QR](/scanner) na fábrica!\n\nAcesse em [PCP / Kanban](/producao).',
+    answer: 'O **PCP (Planejamento e Controle de Produção)** organiza as OSs em um painel Kanban visual:\n\n• **Backlog** — OSs aguardando início.\n• **Arte/Aprovação** — arte em criação ou aguardando aprovação do cliente.\n• **Impressão** — peças sendo impressas.\n• **Acabamento** — corte, dobra, colagem e montagem.\n• **Instalação** — peças prontas para instalar.\n• **Concluído** — trabalhos finalizados.\n\nArraste as OSs entre colunas para atualizar o status!\n\nAcesse em [PCP / Kanban](/producao).',
     route: '/producao',
-    relatedIds: ['scanner', 'os-overview', 'instalacoes']
-  },
-  {
-    id: 'scanner',
-    category: 'Produção / PCP',
-    keywords: ['scanner', 'qr', 'qr code', 'leitor', 'leitor qr', 'etiqueta', 'leitura', 'tablet', 'celular', 'fabrica', 'chao de fabrica', 'codigo qr'],
-    question: 'Como funciona o Leitor QR de Produção?',
-    answer: 'O **Scanner de Produção** permite controle direto no chão de fábrica:\n\n1. Acesse [Leitor QR](/scanner) em um tablet ou celular.\n2. **Escaneie a etiqueta QR** da OS ou do item.\n3. O sistema identifica a OS e mostra o status atual.\n4. Clique em **"Iniciar Etapa"** ou **"Concluir Etapa"** para avançar no Kanban.\n\n💡 Ideal para operadores que não precisam de computador. Funciona em qualquer dispositivo com câmera!',
-    route: '/scanner',
-    relatedIds: ['producao-overview']
+    relatedIds: ['os-overview', 'instalacoes']
   },
 
   // ── ESTOQUE ────────────────────────────────────────────
@@ -430,7 +421,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     category: 'Fluxos',
     keywords: ['fluxo', 'processo', 'passo a passo', 'como comeco', 'por onde comeco', 'workflow', 'fluxo completo', 'do inicio ao fim', 'ciclo', 'etapas do sistema', 'como funciona tudo'],
     question: 'Qual é o fluxo completo do sistema?',
-    answer: 'O **fluxo completo** do ERP de Comunicação Visual:\n\n1. 📋 **Cadastro do Cliente** → [Clientes](/clientes)\n2. 💰 **Orçamento** → [Orçamentos](/orcamentos) (use as [Calculadoras](/calculadoras))\n3. 🎨 **Aprovação de Arte** → [Aprovações](/aprovacoes) (link para o cliente)\n4. 📝 **Ordem de Serviço** → [Ordens de Serviço](/ordens-servico) (converta o orçamento)\n5. 🏭 **Produção** → [PCP / Kanban](/producao) (ou [Scanner QR](/scanner))\n6. 📦 **Estoque** → [Estoque](/estoque) (materiais baixados automaticamente)\n7. 🔧 **Instalação** → [Instalações](/instalacoes) (agende e execute)\n8. 💵 **Financeiro** → [Financeiro](/financeiro) (fature e dê baixa)\n9. 📊 **Relatórios** → [Relatórios](/relatorios) (analise resultados)\n\nCada etapa é integrada — os dados fluem automaticamente!',
+    answer: 'O **fluxo completo** do ERP de Comunicação Visual:\n\n1. 📋 **Cadastro do Cliente** → [Clientes](/clientes)\n2. 💰 **Orçamento** → [Orçamentos](/orcamentos) (use as [Calculadoras](/calculadoras))\n3. 🎨 **Aprovação de Arte** → [Aprovações](/aprovacoes) (link para o cliente)\n4. 📝 **Ordem de Serviço** → [Ordens de Serviço](/ordens-servico) (converta o orçamento)\n5. 🏭 **Produção** → [PCP / Kanban](/producao)\n6. 📦 **Estoque** → [Estoque](/estoque) (materiais baixados automaticamente)\n7. 🔧 **Instalação** → [Instalações](/instalacoes) (agende e execute)\n8. 💵 **Financeiro** → [Financeiro](/financeiro) (fature e dê baixa)\n9. 📊 **Relatórios** → [Relatórios](/relatorios) (analise resultados)\n\nCada etapa é integrada — os dados fluem automaticamente!',
     relatedIds: ['dashboard', 'orcamento-overview', 'os-overview', 'producao-overview']
   },
 
@@ -440,7 +431,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     category: 'Sobre o Sistema',
     keywords: ['o que e', 'sistema', 'erp', 'comunicacao visual', 'sobre', 'funcionalidades', 'modulos', 'para que serve', 'grafio', 'o que faz'],
     question: 'O que é este sistema?',
-    answer: 'Este é o **ERP GRAFIO** — sistema completo de gestão para empresas de comunicação visual, sinalização e gráficas.\n\nPossui **mais de 20 módulos** integrados:\n\n• **Comercial** — Clientes, Orçamentos, Aprovações.\n• **Operacional** — OSs, PCP/Kanban, Scanner QR, Instalações.\n• **Suprimentos** — Estoque, Fornecedores, Calculadoras, Comparador.\n• **Financeiro** — Contas a Pagar/Receber, Contratos, Centro de Custos.\n• **Produtividade** — Calendário, Notas, Documentos, Modelos, Links.\n• **Análise** — Dashboard, Relatórios, Gráficos.\n\nPergunte sobre qualquer módulo para saber mais!',
+    answer: 'Este é o **ERP GRAFIO** — sistema completo de gestão para empresas de comunicação visual, sinalização e gráficas.\n\nPossui **mais de 20 módulos** integrados:\n\n• **Comercial** — Clientes, Orçamentos, Aprovações.\n• **Operacional** — OSs, PCP/Kanban, Instalações.\n• **Suprimentos** — Estoque, Fornecedores, Calculadoras, Comparador.\n• **Financeiro** — Contas a Pagar/Receber, Contratos, Centro de Custos.\n• **Produtividade** — Calendário, Notas, Documentos, Modelos, Links.\n• **Análise** — Dashboard, Relatórios, Gráficos.\n\nPergunte sobre qualquer módulo para saber mais!',
     relatedIds: ['fluxo-completo', 'dashboard']
   },
   {
@@ -448,7 +439,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     category: 'Sobre o Sistema',
     keywords: ['quais modulos', 'lista modulos', 'todos modulos', 'quais funcionalidades', 'o que tem', 'quais paginas', 'menu', 'navegacao', 'onde fica'],
     question: 'Quais módulos o sistema possui?',
-    answer: 'O sistema possui os seguintes módulos:\n\n📊 **Gestão**\n• [Dashboard](/) — Visão geral e KPIs\n• [Relatórios](/relatorios) — Análises e exportações\n• [Calendário](/calendario) — Agenda e prazos\n\n💼 **Comercial**\n• [Clientes](/clientes) — CRM completo\n• [Orçamentos](/orcamentos) — Propostas e precificação\n• [Aprovações](/aprovacoes) — Aprovação de arte online\n\n🏭 **Operacional**\n• [Ordens de Serviço](/ordens-servico) — Gestão de OSs\n• [Produção / Kanban](/producao) — PCP visual\n• [Scanner QR](/scanner) — Leitor para fábrica\n• [Instalações](/instalacoes) — Montagem em campo\n• [Visitas Técnicas](/visitas) — Levantamentos\n\n📦 **Suprimentos**\n• [Estoque](/estoque) — Controle de insumos\n• [Fornecedores](/fornecedores) — Cadastro de fornecedores\n• [Calculadoras](/calculadoras) — Cálculos de materiais\n• [Comparador](/comparador) — Comparar preços\n• [Máquinas](/maquinas) — Equipamentos\n\n💰 **Financeiro**\n• [Financeiro](/financeiro) — Pagar e receber\n• [Contratos](/contratos) — Recorrência\n\n📁 **Produtividade**\n• [Documentos](/documentos) — Gestão documental\n• [Modelos / POPs](/modelos) — Procedimentos\n• [Links Úteis](/links) — Atalhos\n• [Notas](/notas) — Lembretes\n\n⚙️ [Configurações](/configuracoes) — Personalização do sistema',
+    answer: 'O sistema possui os seguintes módulos:\n\n📊 **Gestão**\n• [Dashboard](/) — Visão geral e KPIs\n• [Relatórios](/relatorios) — Análises e exportações\n• [Calendário](/calendario) — Agenda e prazos\n\n💼 **Comercial**\n• [Clientes](/clientes) — CRM completo\n• [Orçamentos](/orcamentos) — Propostas e precificação\n• [Aprovações](/aprovacoes) — Aprovação de arte online\n\n🏭 **Operacional**\n• [Ordens de Serviço](/ordens-servico) — Gestão de OSs\n• [Produção / Kanban](/producao) — PCP visual\n• [Instalações](/instalacoes) — Montagem em campo\n• [Visitas Técnicas](/visitas) — Levantamentos\n\n📦 **Suprimentos**\n• [Estoque](/estoque) — Controle de insumos\n• [Fornecedores](/fornecedores) — Cadastro de fornecedores\n• [Calculadoras](/calculadoras) — Cálculos de materiais\n• [Comparador](/comparador) — Comparar preços\n• [Máquinas](/maquinas) — Equipamentos\n\n💰 **Financeiro**\n• [Financeiro](/financeiro) — Pagar e receber\n• [Contratos](/contratos) — Recorrência\n\n📁 **Produtividade**\n• [Documentos](/documentos) — Gestão documental\n• [Modelos / POPs](/modelos) — Procedimentos\n• [Links Úteis](/links) — Atalhos\n• [Notas](/notas) — Lembretes\n\n⚙️ [Configurações](/configuracoes) — Personalização do sistema',
     relatedIds: ['o-que-e-sistema', 'fluxo-completo']
   },
 
@@ -458,8 +449,8 @@ const knowledgeBase: KnowledgeEntry[] = [
     category: 'Dicas',
     keywords: ['dica', 'dicas', 'truque', 'produtividade', 'rapido', 'eficiencia', 'como usar melhor'],
     question: 'Dicas de produtividade?',
-    answer: 'Aqui vão **dicas de produtividade**:\n\n• 🔍 **Busca rápida** — use a barra de busca em qualquer listagem para filtrar.\n• 📱 **Mobile** — o sistema é responsivo, use no celular em campo.\n• 🔗 **ViaCEP** — digite apenas o CEP para preencher endereços.\n• 📷 **Scanner QR** — atualize produção direto na fábrica.\n• 📊 **Dashboard** — comece o dia pelo Dashboard para visão geral.\n• 🎨 **Aprovação online** — envie links de arte por WhatsApp.\n• 📋 **Orçamento → OS** — converta com um clique.\n• 📅 **Calendário** — acompanhe prazos e agendamentos.',
-    relatedIds: ['fluxo-completo', 'scanner', 'viacep']
+    answer: 'Aqui vão **dicas de produtividade**:\n\n• 🔍 **Busca rápida** — use a barra de busca em qualquer listagem para filtrar.\n• 📱 **Mobile** — o sistema é responsivo, use no celular em campo.\n• 🔗 **ViaCEP** — digite apenas o CEP para preencher endereços.\n• 📊 **Dashboard** — comece o dia pelo Dashboard para visão geral.\n• 🎨 **Aprovação online** — envie links de arte por WhatsApp.\n• 📋 **Orçamento → OS** — converta com um clique.\n• 📅 **Calendário** — acompanhe prazos e agendamentos.',
+    relatedIds: ['fluxo-completo', 'viacep']
   },
 
   // ── BUSCA E FILTROS ────────────────────────────────────

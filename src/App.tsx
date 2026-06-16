@@ -32,7 +32,6 @@ import ComparadorPrecosPage from './pages/ComparadorPrecosPage';
 import ModelosPage from './pages/ModelosPage';
 import LinksPage from './pages/LinksPage';
 import MaquinasPage from './pages/MaquinasPage';
-import ScannerProducaoPage from './pages/ScannerProducaoPage';
 import ConfiguracoesPage from './pages/ConfiguracoesPage';
 import CalendarioPage from './pages/CalendarioPage';
 import InstalacoesPage from './pages/InstalacoesPage';
@@ -108,7 +107,7 @@ export default function App() {
             <Route path="calculadoras" element={<CalculadorasPage />} />
             <Route path="comparador" element={<ComparadorPrecosPage />} />
             <Route path="maquinas" element={<MaquinasPage />} />
-            <Route path="scanner" element={<ScannerProducaoPage />} />
+            
             
             <Route path="visitas" element={<VisitasPage />} />
             <Route path="visitas/nova" element={<VisitaFormPage />} />
